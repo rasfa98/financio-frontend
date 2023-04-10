@@ -1,5 +1,4 @@
 :host {
-  padding: var(--spacing);
   background: var(--main-background);
   height: 100%;
 
@@ -9,10 +8,12 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing);
 
     li {
       a {
+        display: flex;
+        align-items: center;
+        padding: var(--spacing);
         color: white;
       }
     }
