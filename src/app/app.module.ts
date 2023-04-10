@@ -5,11 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { BudgetsComponent } from './components/budgets/budgets.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { CurrencyComponent } from './components/currency/currency.component';
 import { HeaderComponent } from './components/header/header.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
-  declarations: [AppComponent, BudgetsComponent, SidebarComponent, HeaderComponent],
+  declarations: [
+    AppComponent,
+    BudgetsComponent,
+    SidebarComponent,
+    HeaderComponent,
+    CurrencyComponent,
+    ButtonComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

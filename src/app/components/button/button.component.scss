@@ -1,0 +1,15 @@
+.button {
+  border: none;
+  padding: var(--spacing);
+  cursor: pointer;
+
+  &.default {
+    background: black;
+    color: white;
+  }
+
+  &.danger {
+    background: red;
+    color: white;
+  }
+}

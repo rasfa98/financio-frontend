@@ -1,1 +1,26 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
 
+  thead {
+    font-weight: bold;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: var(--spacing);
+  }
+
+  td.actions {
+    justify-content: flex-end;
+    display: flex;
+    gap: var(--spacing);
+  }
+
+  tbody {
+    tr:nth-child(odd) {
+      background-color: #f2f2f2;
+    }
+  }
+}

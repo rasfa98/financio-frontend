@@ -4,7 +4,6 @@
       <th>Name</th>
       <th>Amount</th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -13,7 +12,13 @@
         {{ budget.name }}
       </td>
       <td>
-        {{ budget.amount }}
+        <app-currency [amount]="budget.amount"></app-currency>
+      </td>
+      <td class="actions">
+        <app-button>Edit</app-button>
+        <app-button (onClick)="removeBudget(budget.id)" type="danger"
+          >Remove</app-button
+        >
       </td>
     </tr>
   </tbody>

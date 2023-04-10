@@ -17,4 +17,12 @@ export class BudgetsComponent {
       .getBudgets()
       .subscribe((budgets) => (this.budgets = budgets));
   }
+
+  removeBudget(id: number): void {
+    this.budgetService
+      .removeBudget(id)
+      .subscribe(
+        () => (this.budgets = this.budgets.filter((budget) => budget.id !== id))
+      );
+  }
 }
