@@ -1,0 +1,20 @@
+.sidebar {
+  padding: var(--spacing);
+  background: var(--main-background);
+  height: 100%;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
+
+    li {
+      a {
+        color: white;
+      }
+    }
+  }
+}
