@@ -1,0 +1,9 @@
+<form [formGroup]="budgetForm">
+  <input type="hidden" name="id" formControlName="id" />
+
+  <label for="name">Name: </label>
+  <input id="name" type="text" formControlName="name" />
+
+  <label for="amount">Amount: </label>
+  <input id="amount" type="number" formControlName="amount" />
+</form>

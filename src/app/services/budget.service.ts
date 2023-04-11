@@ -14,7 +14,20 @@ export class BudgetService {
     return this.http.get<Budget[]>(`${environment.apiUrl}/budgets`);
   }
 
-  removeBudget(id: number): Observable<Budget> {
-    return this.http.delete<Budget>(`${environment.apiUrl}/budgets/${id}`);
+  removeBudget(budget: Budget): Observable<Budget> {
+    return this.http.delete<Budget>(
+      `${environment.apiUrl}/budgets/${budget.id}`
+    );
+  }
+
+  createBudget(budget: Budget): Observable<Budget> {
+    return this.http.post<Budget>(`${environment.apiUrl}/budgets`, budget);
+  }
+
+  updateBudget(budget: Budget): Observable<Budget> {
+    return this.http.put<Budget>(
+      `${environment.apiUrl}/budgets/${budget.id}`,
+      budget
+    );
   }
 }

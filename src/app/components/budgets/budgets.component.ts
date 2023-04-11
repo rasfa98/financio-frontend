@@ -18,11 +18,11 @@ export class BudgetsComponent {
       .subscribe((budgets) => (this.budgets = budgets));
   }
 
-  removeBudget(id: number): void {
+  removeBudget(budget: Budget): void {
     this.budgetService
-      .removeBudget(id)
+      .removeBudget(budget)
       .subscribe(
-        () => (this.budgets = this.budgets.filter((budget) => budget.id !== id))
+        () => (this.budgets = this.budgets.filter((b) => b.id !== budget.id))
       );
   }
 }

@@ -1,5 +1,5 @@
 export interface Budget {
-  id: number;
+  id?: number;
   name: string;
   amount: number;
 }
