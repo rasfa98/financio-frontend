@@ -12,7 +12,7 @@ table {
     padding: var(--spacing);
   }
 
-  td.actions {
+  .actions {
     justify-content: flex-end;
     display: flex;
     gap: var(--spacing);

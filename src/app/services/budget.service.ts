@@ -2,7 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Budget } from '../types/Budget';
+import {
+  Budget,
+  CreateBudgetRequest,
+  UpdateBudgetRequest,
+} from '../types/Budget';
 
 @Injectable({
   providedIn: 'root',
@@ -18,13 +22,13 @@ export class BudgetService {
     return this.http.get<Budget>(`${environment.apiUrl}/budgets/${id}`);
   }
 
-  removeBudget(budget: Budget): Observable<Budget> {
+  removeBudget(budget: UpdateBudgetRequest): Observable<Budget> {
     return this.http.delete<Budget>(
       `${environment.apiUrl}/budgets/${budget.id}`
     );
   }
 
-  createBudget(budget: Budget): Observable<Budget> {
+  createBudget(budget: CreateBudgetRequest): Observable<Budget> {
     return this.http.post<Budget>(`${environment.apiUrl}/budgets`, budget);
   }
 

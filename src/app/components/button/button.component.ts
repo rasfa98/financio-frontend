@@ -9,7 +9,7 @@ export class ButtonComponent {
   @Input() type: 'primary' | 'secondary' | 'danger' | 'success' = 'primary';
   @Input() disabled: boolean = false;
   @Input() class?: string = '';
-  @Output() onClick = new EventEmitter<MouseEvent>();
+  @Output() onClick = new EventEmitter();
 
   onClickButton(event: MouseEvent) {
     this.onClick.emit(event);

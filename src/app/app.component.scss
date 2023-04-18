@@ -1,7 +1,7 @@
 .grid {
   height: calc(100% - var(--header-height));
   display: grid;
-  grid-template-columns: 300px auto;
+  grid-template-columns: 200px auto;
 
   .router-outlet {
     padding: var(--spacing);

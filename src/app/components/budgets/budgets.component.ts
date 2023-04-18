@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { faEye, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import {
+  faEye,
+  faPen,
+  faPlus,
+  faTrash,
+} from '@fortawesome/free-solid-svg-icons';
 import { BudgetService } from 'src/app/services/budget.service';
 import { Budget } from 'src/app/types/Budget';
 
@@ -10,11 +14,12 @@ import { Budget } from 'src/app/types/Budget';
   styleUrls: ['./budgets.component.scss'],
 })
 export class BudgetsComponent {
-  constructor(private budgetService: BudgetService, private router: Router) {}
+  constructor(private budgetService: BudgetService) {}
 
   faTrash = faTrash;
   faPen = faPen;
   faEye = faEye;
+  faPlus = faPlus;
 
   budgets: Budget[] = [];
 
@@ -22,14 +27,6 @@ export class BudgetsComponent {
     this.budgetService
       .getBudgets()
       .subscribe((budgets) => (this.budgets = budgets));
-  }
-
-  editBudget(budget: Budget): void {
-    this.router.navigateByUrl(`/budgets/${budget.id}`);
-  }
-
-  viewBudget(budget: Budget): void {
-    this.router.navigateByUrl(`/budgets/${budget.id}/show`);
   }
 
   removeBudget(budget: Budget): void {

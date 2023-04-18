@@ -1,9 +1,17 @@
+<div class="header">
+  <h2>Budgets</h2>
+</div>
+
 <table>
   <thead>
     <tr>
       <th>Name</th>
       <th>Amount</th>
-      <th></th>
+      <th class="actions">
+        <app-button class="icon" routerLink="/budgets/create" type="success"
+          ><fa-icon [icon]="faPlus"></fa-icon
+        ></app-button>
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -15,13 +23,17 @@
         <app-currency [amount]="budget.amount"></app-currency>
       </td>
       <td class="actions">
-        <app-button (onClick)="viewBudget(budget)">
+        <app-button class="icon" routerLink="/budgets/{{ budget.id }}/show">
           <fa-icon [icon]="faEye"></fa-icon>
         </app-button>
-        <app-button (onClick)="editBudget(budget)" type="secondary">
+        <app-button
+          class="icon"
+          routerLink="/budgets/{{ budget.id }}"
+          type="secondary"
+        >
           <fa-icon [icon]="faPen"></fa-icon>
         </app-button>
-        <app-button (onClick)="removeBudget(budget)" type="danger">
+        <app-button class="icon" (onClick)="removeBudget(budget)" type="danger">
           <fa-icon [icon]="faTrash"></fa-icon>
         </app-button>
       </td>

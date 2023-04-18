@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { BudgetService } from 'src/app/services/budget.service';
-import { FormMode } from 'src/app/types/FormMode';
+import { Budget } from 'src/app/types/Budget';
 
 @Component({
   selector: 'app-budget-form',
@@ -10,13 +14,9 @@ import { FormMode } from 'src/app/types/FormMode';
   styleUrls: ['./budget-form.component.scss'],
 })
 export class BudgetFormComponent {
-  constructor(
-    private budgetService: BudgetService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
+  @Input() budget?: Budget;
+  @Output() onSubmit = new EventEmitter();
 
-  mode = FormMode.CREATE;
   budgetForm = new FormGroup({
     id: new FormControl<number | null>(null),
     name: new FormControl<string | null>(null, [Validators.required]),
@@ -26,47 +26,19 @@ export class BudgetFormComponent {
     ]),
   });
 
-  ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      const id = params['id'];
+  ngOnChanges(changes: SimpleChanges): void {
+    const budget = changes['budget'].currentValue;
 
-      if (id) {
-        this.budgetService.getBudget(id).subscribe((budget) => {
-          this.budgetForm.setValue({
-            id: budget.id,
-            name: budget.name,
-            amount: budget.amount,
-          });
-        });
-      }
-    });
-
-    this.route.data.subscribe((data) => {
-      this.mode = data['mode'];
-    });
+    if (budget) {
+      this.budgetForm.setValue({
+        id: budget.id,
+        name: budget.name,
+        amount: budget.amount,
+      });
+    }
   }
 
-  onSubmit() {
-    const { id, name, amount } = this.budgetForm.value;
-
-    const budget = {
-      id: id || null,
-      name: name || '',
-      amount: amount || 0,
-    };
-
-    if (this.mode === FormMode.EDIT) {
-      this.budgetService
-        .updateBudget(budget)
-        .subscribe(() => this.router.navigateByUrl('/budgets'));
-    }
-
-    if (this.mode === FormMode.CREATE) {
-      this.budgetService
-        .createBudget(budget)
-        .subscribe((budget) =>
-          this.router.navigateByUrl(`/budgets/${budget.id}/show`)
-        );
-    }
+  handleSubmit(): void {
+    this.onSubmit.emit(this.budgetForm.value);
   }
 }

@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BudgetFormComponent } from './components/budget-form/budget-form.component';
 import { BudgetsComponent } from './components/budgets/budgets.component';
-import { FormMode } from './types/FormMode';
+import { CreateBudgetComponent } from './components/create-budget/create-budget.component';
+import { EditBudgetComponent } from './components/edit-budget/edit-budget.component';
+import { ViewBudgetComponent } from './components/view-budget/view-budget.component';
 
 const routes: Routes = [
   {
@@ -11,24 +12,15 @@ const routes: Routes = [
   },
   {
     path: 'budgets/create',
-    component: BudgetFormComponent,
-    data: {
-      mode: FormMode.CREATE,
-    },
+    component: CreateBudgetComponent,
   },
   {
     path: 'budgets/:id',
-    component: BudgetFormComponent,
-    data: {
-      mode: FormMode.EDIT,
-    },
+    component: EditBudgetComponent,
   },
   {
     path: 'budgets/:id/show',
-    component: BudgetFormComponent,
-    data: {
-      mode: FormMode.VIEW,
-    },
+    component: ViewBudgetComponent,
   },
 ];
 
