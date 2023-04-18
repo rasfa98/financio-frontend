@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Test budget",
-      "amount": 2300
+      "amount": 2500
     },
     {
       "id": 2,
@@ -14,6 +14,11 @@
       "id": 3,
       "name": "Third test budget",
       "amount": 20000
+    },
+    {
+      "id": 4,
+      "name": "Test budget",
+      "amount": 20
     }
   ],
   "expenses": [

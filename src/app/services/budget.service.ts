@@ -14,6 +14,10 @@ export class BudgetService {
     return this.http.get<Budget[]>(`${environment.apiUrl}/budgets`);
   }
 
+  getBudget(id: string): Observable<Budget> {
+    return this.http.get<Budget>(`${environment.apiUrl}/budgets/${id}`);
+  }
+
   removeBudget(budget: Budget): Observable<Budget> {
     return this.http.delete<Budget>(
       `${environment.apiUrl}/budgets/${budget.id}`

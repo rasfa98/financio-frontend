@@ -3,13 +3,32 @@
   padding: var(--spacing);
   cursor: pointer;
 
-  &.default {
+  &.full {
+    width: 100%;
+  }
+
+  &.primary {
     background: black;
     color: white;
+  }
+
+  &.secondary {
+    background: lightgray;
+    color: black;
   }
 
   &.danger {
     background: red;
     color: white;
+  }
+
+  &.success {
+    background: green;
+    color: white;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background: darkgray;
   }
 }

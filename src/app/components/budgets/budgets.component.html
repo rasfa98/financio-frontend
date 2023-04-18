@@ -15,10 +15,15 @@
         <app-currency [amount]="budget.amount"></app-currency>
       </td>
       <td class="actions">
-        <app-button>Edit</app-button>
-        <app-button (onClick)="removeBudget(budget)" type="danger"
-          >Remove</app-button
-        >
+        <app-button (onClick)="viewBudget(budget)">
+          <fa-icon [icon]="faEye"></fa-icon>
+        </app-button>
+        <app-button (onClick)="editBudget(budget)" type="secondary">
+          <fa-icon [icon]="faPen"></fa-icon>
+        </app-button>
+        <app-button (onClick)="removeBudget(budget)" type="danger">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </app-button>
       </td>
     </tr>
   </tbody>

@@ -1,9 +1,21 @@
-<form [formGroup]="budgetForm">
+<form [formGroup]="budgetForm" (ngSubmit)="onSubmit()">
   <input type="hidden" name="id" formControlName="id" />
 
-  <label for="name">Name: </label>
-  <input id="name" type="text" formControlName="name" />
+  <div class="form-group">
+    <label for="name">Name: </label>
+    <input id="name" type="text" formControlName="name" />
+  </div>
 
-  <label for="amount">Amount: </label>
-  <input id="amount" type="number" formControlName="amount" />
+  <div class="form-group">
+    <label for="amount">Amount: </label>
+    <input id="amount" type="number" formControlName="amount" />
+  </div>
+
+  <app-button
+    class="full"
+    *ngIf="mode !== 'view'"
+    type="success"
+    [disabled]="!budgetForm.valid"
+    >Save</app-button
+  >
 </form>
