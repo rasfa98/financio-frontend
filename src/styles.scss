@@ -25,3 +25,10 @@ a {
   text-decoration: none;
   color: black;
 }
+
+input {
+  width: 100%;
+  font-size: 1rem;
+  border: 1px solid black;
+  padding: var(--spacing);
+}

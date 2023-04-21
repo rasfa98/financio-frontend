@@ -1,0 +1,57 @@
+<div class="header">
+  <div>
+    <h3>Name</h3>
+  </div>
+  <div>
+    <h3>Amount</h3>
+  </div>
+
+  <div class="actions">
+    <app-button level="success" class="icon" (onClick)="toggleShowAddExpense()">
+      <fa-icon [icon]="faPlus"></fa-icon>
+    </app-button>
+  </div>
+</div>
+
+<div *ngFor="let expense of expenses">
+  <app-expense-form
+    *ngIf="isEditingExpenseId === expense.id; else elseBlock"
+    (onSubmit)="updateExpense($event)"
+    (onCancel)="cancelIsEditingExpense()"
+    [expense]="expense"
+  ></app-expense-form>
+
+  <ng-template #elseBlock>
+    <div class="expense-item">
+      <div>
+        {{ expense.name }}
+      </div>
+      <div>
+        <app-currency [amount]="expense.amount"></app-currency>
+      </div>
+      <div class="actions">
+        <app-button
+          class="icon"
+          (onClick)="setIsEditingExpense(expense)"
+          level="secondary"
+        >
+          <fa-icon [icon]="faPen"></fa-icon>
+        </app-button>
+        <app-button
+          class="icon"
+          (onClick)="removeExpense(expense)"
+          level="danger"
+        >
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </app-button>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+<app-expense-form
+  *ngIf="showAddExpense"
+  (onSubmit)="createExpense($event)"
+  [budgetId]="budgetId"
+  (onCancel)="toggleShowAddExpense()"
+></app-expense-form>

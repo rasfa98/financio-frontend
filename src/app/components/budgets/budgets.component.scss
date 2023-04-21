@@ -17,10 +17,4 @@ table {
     display: flex;
     gap: var(--spacing);
   }
-
-  tbody {
-    tr:nth-child(odd) {
-      background-color: #f2f2f2;
-    }
-  }
 }

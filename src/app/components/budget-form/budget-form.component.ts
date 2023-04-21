@@ -27,14 +27,10 @@ export class BudgetFormComponent {
   });
 
   ngOnChanges(changes: SimpleChanges): void {
-    const budget = changes['budget'].currentValue;
+    const budget: Budget = changes['budget'].currentValue;
 
     if (budget) {
-      this.budgetForm.setValue({
-        id: budget.id,
-        name: budget.name,
-        amount: budget.amount,
-      });
+      this.budgetForm.setValue(budget);
     }
   }
 

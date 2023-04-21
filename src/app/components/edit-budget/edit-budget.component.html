@@ -1,6 +1,16 @@
-<h2>Edit budget</h2>
+<div class="container">
+  <div>
+    <h2>Edit budget</h2>
 
-<app-budget-form
-  (onSubmit)="onSubmit($event)"
-  [budget]="budget"
-></app-budget-form>
+    <app-budget-form
+      (onSubmit)="onSubmit($event)"
+      [budget]="budget"
+    ></app-budget-form>
+  </div>
+
+  <div>
+    <h2>Expenses</h2>
+
+    <app-expenses [budgetId]="budget.id"></app-expenses>
+  </div>
+</div>

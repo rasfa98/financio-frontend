@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BudgetService } from 'src/app/services/budget.service';
-import { Budget, UpdateBudgetRequest } from 'src/app/types/Budget';
+import { Budget } from 'src/app/types/Budget';
 
 @Component({
   selector: 'app-edit-budget',
@@ -29,7 +29,7 @@ export class EditBudgetComponent {
     });
   }
 
-  onSubmit(budget: UpdateBudgetRequest): void {
+  onSubmit(budget: Budget): void {
     this.budgetService
       .updateBudget(budget)
       .subscribe(() => this.router.navigateByUrl('/budgets'));

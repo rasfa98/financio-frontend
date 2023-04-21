@@ -6,8 +6,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent {
-  @Input() type: 'primary' | 'secondary' | 'danger' | 'success' = 'primary';
+  @Input() level: 'primary' | 'secondary' | 'danger' | 'success' = 'primary';
   @Input() disabled: boolean = false;
+  @Input() type?: 'submit' | 'button' = 'button';
   @Input() class?: string = '';
   @Output() onClick = new EventEmitter();
 

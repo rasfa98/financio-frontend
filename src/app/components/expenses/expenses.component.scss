@@ -1,0 +1,25 @@
+.header {
+  h3 {
+    font-size: 1rem;
+  }
+}
+
+.expense-item,
+.header {
+  display: flex;
+  align-items: center;
+
+  > div {
+    padding: var(--spacing);
+  }
+
+  > div:not(.actions) {
+    width: 30%;
+  }
+}
+
+.actions {
+  margin-left: auto;
+  display: flex;
+  gap: var(--spacing);
+}

@@ -8,7 +8,7 @@
       <th>Name</th>
       <th>Amount</th>
       <th class="actions">
-        <app-button class="icon" routerLink="/budgets/create" type="success"
+        <app-button class="icon" routerLink="/budgets/create" level="success"
           ><fa-icon [icon]="faPlus"></fa-icon
         ></app-button>
       </th>
@@ -29,11 +29,15 @@
         <app-button
           class="icon"
           routerLink="/budgets/{{ budget.id }}"
-          type="secondary"
+          level="secondary"
         >
           <fa-icon [icon]="faPen"></fa-icon>
         </app-button>
-        <app-button class="icon" (onClick)="removeBudget(budget)" type="danger">
+        <app-button
+          class="icon"
+          (onClick)="removeBudget(budget)"
+          level="danger"
+        >
           <fa-icon [icon]="faTrash"></fa-icon>
         </app-button>
       </td>
