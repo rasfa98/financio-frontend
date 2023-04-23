@@ -3,13 +3,11 @@
   padding: var(--spacing);
   cursor: pointer;
   height: 40px;
+  padding: 10px 20px;
 
   &.icon {
+    padding: 0;
     width: 40px;
-  }
-
-  &.full {
-    width: 100%;
   }
 
   &.primary {

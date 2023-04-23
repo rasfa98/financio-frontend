@@ -32,3 +32,12 @@ input {
   border: 1px solid black;
   padding: var(--spacing);
 }
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing);
+  margin-bottom: var(--spacing);
+}

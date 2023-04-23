@@ -3,29 +3,42 @@
 
   <div class="form-group">
     <label for="name">Name: </label>
-    <input
-      placeholder="Enter name"
-      id="name"
-      type="text"
-      formControlName="name"
-    />
+    <input placeholder="Enter name" type="text" formControlName="name" />
   </div>
 
   <div class="form-group">
     <label for="amount">Amount: </label>
-    <input
-      placeholder="Enter amount"
-      id="amount"
-      type="number"
-      formControlName="amount"
-    />
+    <input placeholder="Enter amount" type="number" formControlName="amount" />
   </div>
 
-  <app-button
-    type="submit"
-    class="full"
-    level="success"
-    [disabled]="!budgetForm.valid"
+  <div class="header">
+    <h2>Expenses</h2>
+
+    <app-button level="success" class="icon" (onClick)="addExpense()">
+      <fa-icon [icon]="faPlus"></fa-icon>
+    </app-button>
+  </div>
+
+  <div formArrayName="expenses" class="expenses">
+    <p *ngIf="!expenses.length">You have not added any expenses.</p>
+    <ng-container *ngFor="let expenseForm of expenses.controls; let i = index">
+      <div [formGroupName]="i" class="expense">
+        <input type="hidden" formControlName="id" />
+        <input formControlName="name" type="text" placeholder="Enter name" />
+        <input
+          formControlName="amount"
+          type="number"
+          placeholder="Enter amount"
+        />
+
+        <app-button class="icon" level="danger" (onClick)="deleteExpense(i)">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </app-button>
+      </div>
+    </ng-container>
+  </div>
+
+  <app-button type="submit" level="success" [disabled]="!budgetForm.valid"
     >Save</app-button
   >
 </form>

@@ -15,8 +15,6 @@ import { EditBudgetComponent } from './components/edit-budget/edit-budget.compon
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ViewBudgetComponent } from './components/view-budget/view-budget.component';
-import { ExpensesComponent } from './components/expenses/expenses.component';
-import { ExpenseFormComponent } from './components/expense-form/expense-form.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +28,6 @@ import { ExpenseFormComponent } from './components/expense-form/expense-form.com
     EditBudgetComponent,
     CreateBudgetComponent,
     ViewBudgetComponent,
-    ExpensesComponent,
-    ExpenseFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,8 @@
-export interface Budget {
-  id: number;
-  name: string;
-  amount: number;
-}
+import { Expense } from './Expense';
 
-export interface CreateBudgetRequest {
+export interface Budget {
+  id?: number;
   name: string;
   amount: number;
+  expenses: Expense[];
 }

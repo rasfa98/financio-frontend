@@ -19,7 +19,7 @@ export class EditBudgetComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      const id = params['id'];
+      const id = parseInt(params['id']);
 
       if (id) {
         this.budgetService.getBudget(id).subscribe((budget) => {

@@ -1,11 +1,6 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Budget } from 'src/app/types/Budget';
 
 @Component({
@@ -14,24 +9,53 @@ import { Budget } from 'src/app/types/Budget';
   styleUrls: ['./budget-form.component.scss'],
 })
 export class BudgetFormComponent {
+  constructor(private fb: FormBuilder) {}
+
   @Input() budget?: Budget;
   @Output() onSubmit = new EventEmitter();
 
-  budgetForm = new FormGroup({
-    id: new FormControl<number | null>(null),
-    name: new FormControl<string | null>(null, [Validators.required]),
-    amount: new FormControl<number | null>(null, [
-      Validators.required,
-      Validators.min(1),
-    ]),
+  faPlus = faPlus;
+  faTrash = faTrash;
+
+  budgetForm = this.fb.group({
+    id: undefined,
+    name: ['', Validators.required],
+    amount: [0, [Validators.required, Validators.min(1)]],
+    expenses: this.fb.array([]),
   });
 
-  ngOnChanges(changes: SimpleChanges): void {
-    const budget: Budget = changes['budget'].currentValue;
+  get expenses() {
+    return this.budgetForm.controls['expenses'] as FormArray;
+  }
 
-    if (budget) {
-      this.budgetForm.setValue(budget);
+  ngOnInit(): void {
+    if (this.budget) {
+      this.budgetForm.patchValue(this.budget);
+
+      this.budget.expenses.forEach((expense) =>
+        this.expenses.push(
+          this.fb.group({
+            id: expense.id,
+            name: [expense.name, Validators.required],
+            amount: [expense.amount, [Validators.required, Validators.min(1)]],
+          })
+        )
+      );
     }
+  }
+
+  addExpense(): void {
+    this.expenses.push(
+      this.fb.group({
+        id: undefined,
+        name: ['', Validators.required],
+        amount: [0, [Validators.required, Validators.min(1)]],
+      })
+    );
+  }
+
+  deleteExpense(expenseIndex: number): void {
+    this.expenses.removeAt(expenseIndex);
   }
 
   handleSubmit(): void {

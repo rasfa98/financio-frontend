@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BudgetService } from 'src/app/services/budget.service';
-import { CreateBudgetRequest } from 'src/app/types/Budget';
+import { Budget } from 'src/app/types/Budget';
 
 @Component({
   selector: 'app-create-budget',
@@ -11,7 +11,7 @@ import { CreateBudgetRequest } from 'src/app/types/Budget';
 export class CreateBudgetComponent {
   constructor(private budgetService: BudgetService, private router: Router) {}
 
-  onSubmit(budget: CreateBudgetRequest): void {
+  onSubmit(budget: Budget): void {
     this.budgetService
       .createBudget(budget)
       .subscribe((budget) =>

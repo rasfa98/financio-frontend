@@ -1,8 +1,25 @@
 form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   .form-group {
     margin-bottom: calc(var(--spacing) * 2);
     width: 100%;
     display: flex;
     flex-direction: column;
+  }
+}
+
+.expenses {
+  width: 100%;
+  margin-bottom: calc(var(--spacing) * 2);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 2);
+
+  .expense {
+    display: flex;
+    gap: var(--spacing);
   }
 }
