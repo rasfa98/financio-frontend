@@ -18,7 +18,7 @@ export class BudgetFormComponent {
   faTrash = faTrash;
 
   budgetForm = this.fb.group({
-    id: undefined,
+    id: 0,
     name: ['', Validators.required],
     amount: [0, [Validators.required, Validators.min(1)]],
     expenses: this.fb.array([]),
@@ -47,7 +47,7 @@ export class BudgetFormComponent {
   addExpense(): void {
     this.expenses.push(
       this.fb.group({
-        id: undefined,
+        id: 0,
         name: ['', Validators.required],
         amount: [0, [Validators.required, Validators.min(1)]],
       })
