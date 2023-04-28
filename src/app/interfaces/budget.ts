@@ -1,4 +1,4 @@
-import { Expense } from './Expense';
+import { Expense } from './expense';
 
 export interface Budget {
   id?: number;

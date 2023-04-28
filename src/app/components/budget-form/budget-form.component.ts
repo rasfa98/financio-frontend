@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { Budget } from 'src/app/types/Budget';
+import { Budget } from 'src/app/interfaces/budget';
 
 @Component({
   selector: 'app-budget-form',

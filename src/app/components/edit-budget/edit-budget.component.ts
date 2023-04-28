@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Budget } from 'src/app/interfaces/budget';
 import { BudgetService } from 'src/app/services/budget.service';
-import { Budget } from 'src/app/types/Budget';
 
 @Component({
   selector: 'app-edit-budget',

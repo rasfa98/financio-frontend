@@ -5,6 +5,7 @@ import { CreateBudgetComponent } from './components/create-budget/create-budget.
 import { EditBudgetComponent } from './components/edit-budget/edit-budget.component';
 import { LoginComponent } from './components/login/login.component';
 import { ViewBudgetComponent } from './components/view-budget/view-budget.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -14,18 +15,22 @@ const routes: Routes = [
   {
     path: 'budgets',
     component: BudgetsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'budgets/create',
     component: CreateBudgetComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'budgets/:id',
     component: EditBudgetComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'budgets/:id/show',
     component: ViewBudgetComponent,
+    canActivate: [AuthGuard],
   },
 ];
 

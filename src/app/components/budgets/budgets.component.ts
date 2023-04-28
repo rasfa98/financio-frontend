@@ -5,8 +5,8 @@ import {
   faPlus,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
+import { Budget } from 'src/app/interfaces/budget';
 import { BudgetService } from 'src/app/services/budget.service';
-import { Budget } from 'src/app/types/Budget';
 
 @Component({
   selector: 'app-budgets',
