@@ -41,3 +41,16 @@ input {
   gap: var(--spacing);
   margin-bottom: var(--spacing);
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .form-group {
+    margin-bottom: calc(var(--spacing) * 2);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}

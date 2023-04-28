@@ -3,9 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { BudgetsComponent } from './components/budgets/budgets.component';
 import { CreateBudgetComponent } from './components/create-budget/create-budget.component';
 import { EditBudgetComponent } from './components/edit-budget/edit-budget.component';
+import { LoginComponent } from './components/login/login.component';
 import { ViewBudgetComponent } from './components/view-budget/view-budget.component';
 
 const routes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
   {
     path: 'budgets',
     component: BudgetsComponent,
