@@ -14,6 +14,7 @@ import { CurrencyComponent } from './components/currency/currency.component';
 import { EditBudgetComponent } from './components/edit-budget/edit-budget.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ViewBudgetComponent } from './components/view-budget/view-budget.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
@@ -31,6 +32,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     CreateBudgetComponent,
     ViewBudgetComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

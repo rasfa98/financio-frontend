@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LoginRequest, LoginResponse } from '../interfaces/login';
+import { RegisterRequest } from '../interfaces/register';
 
 @Injectable({
   providedIn: 'root',
@@ -33,5 +34,9 @@ export class AuthService {
       `${environment.apiUrl}/auth/login`,
       data
     );
+  }
+
+  register(data: RegisterRequest): Observable<void> {
+    return this.http.post<void>(`${environment.apiUrl}/auth/register`, data);
   }
 }
