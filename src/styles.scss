@@ -3,7 +3,7 @@
 :root {
   --header-height: 60px;
   --spacing: 10px;
-  --main-background: #191919;
+  --black: #191919;
 }
 
 * {
@@ -19,17 +19,18 @@ body {
 
 body {
   font-family: "Poppins", sans-serif;
+  color: var(--black);
 }
 
 a {
   text-decoration: none;
-  color: black;
+  color: var(--black);
 }
 
 input {
   width: 100%;
   font-size: 1rem;
-  border: 1px solid black;
+  border: 1px solid var(--black);
   padding: var(--spacing);
 }
 

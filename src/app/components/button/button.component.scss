@@ -11,13 +11,13 @@
   }
 
   &.primary {
-    background: black;
+    background: var(--black);
     color: white;
   }
 
   &.secondary {
     background: lightgray;
-    color: black;
+    color: var(--black);
   }
 
   &.danger {

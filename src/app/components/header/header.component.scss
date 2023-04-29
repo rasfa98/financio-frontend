@@ -1,7 +1,8 @@
-:host {
+header {
   display: flex;
   align-items: center;
-  background: var(--main-background);
+  justify-content: space-between;
+  background: var(--black);
   padding: var(--spacing);
   height: var(--header-height);
 
