@@ -1,7 +1,7 @@
-<app-header></app-header>
+<app-header [isAuthenticated]="isAuthenticated"></app-header>
 
-<div class="grid">
-  <app-sidebar></app-sidebar>
+<div [ngClass]="{ 'logged-in': isAuthenticated }" class="grid">
+  <app-sidebar *ngIf="isAuthenticated"></app-sidebar>
 
   <div class="router-outlet">
     <router-outlet></router-outlet>

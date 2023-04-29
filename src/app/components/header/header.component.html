@@ -1,3 +1,11 @@
 <header>
-  <a routerLink="/budgets"><b>Financio</b></a>
+  <a routerLink="{{ isAuthenticated ? '/budgets' : '/' }}"><b>Financio</b></a>
+  <app-button
+    *ngIf="isAuthenticated"
+    (onClick)="logout()"
+    class="icon"
+    level="secondary"
+  >
+    <fa-icon [icon]="faSignOut"></fa-icon>
+  </app-button>
 </header>

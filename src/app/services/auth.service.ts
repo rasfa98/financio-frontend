@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Auth } from '../interfaces/auth';
 import { LoginRequest, LoginResponse } from '../interfaces/login';
 import { RegisterRequest } from '../interfaces/register';
 
@@ -11,11 +12,18 @@ import { RegisterRequest } from '../interfaces/register';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
+  private authSubject = new BehaviorSubject<Auth>({
+    isAuthenticated: this.isAuthenticated(),
+  });
+
+  public readonly authObservable = this.authSubject.asObservable();
+
   setToken(token: string): void {
+    this.authSubject.next({ isAuthenticated: true });
     localStorage.setItem('token', token);
   }
 
-  removeToken(): void {
+  private removeToken(): void {
     localStorage.removeItem('token');
   }
 
@@ -27,6 +35,11 @@ export class AuthService {
     const token = this.getToken();
 
     return Boolean(token);
+  }
+
+  logout(): void {
+    this.authSubject.next({ isAuthenticated: false });
+    this.removeToken();
   }
 
   login(data: LoginRequest): Observable<LoginResponse> {
