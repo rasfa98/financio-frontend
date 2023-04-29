@@ -12,6 +12,7 @@
     <tr>
       <th>Name</th>
       <th>Amount</th>
+      <th>Remaining amount</th>
       <th></th>
     </tr>
   </thead>
@@ -22,6 +23,9 @@
       </td>
       <td>
         <app-currency [amount]="budget.amount"></app-currency>
+      </td>
+      <td>
+        <app-currency [amount]="budget.remainingAmount"></app-currency>
       </td>
       <td class="actions">
         <app-button class="icon" routerLink="/budgets/{{ budget.id }}/show">
