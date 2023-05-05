@@ -24,8 +24,9 @@ export class LoginComponent {
   handleSubmit(): void {
     const data = this.loginForm.value;
 
-    this.authService.login(data as LoginRequest).subscribe((data) => {
-      this.authService.setToken(data.token);
+    this.authService.login(data as LoginRequest).subscribe((res) => {
+      this.authService.setToken(res.token);
+      this.authService.setEmail(res.email);
       this.router.navigateByUrl('/budgets');
     });
   }

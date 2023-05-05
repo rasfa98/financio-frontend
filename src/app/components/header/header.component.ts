@@ -14,6 +14,7 @@ export class HeaderComponent {
   faSignOut = faSignOut;
 
   @Input() isAuthenticated: boolean = false;
+  @Input() email: string = '';
 
   logout(): void {
     this.authService.logout();

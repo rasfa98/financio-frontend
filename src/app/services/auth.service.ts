@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Auth } from '../interfaces/auth';
+import { Auth, User } from '../interfaces/auth';
 import { LoginRequest, LoginResponse } from '../interfaces/login';
 import { RegisterRequest } from '../interfaces/register';
 
@@ -14,13 +14,18 @@ export class AuthService {
 
   private authSubject = new BehaviorSubject<Auth>({
     isAuthenticated: this.isAuthenticated(),
+    email: '',
   });
 
   public readonly authObservable = this.authSubject.asObservable();
 
   setToken(token: string): void {
-    this.authSubject.next({ isAuthenticated: true });
+    this.authSubject.next({ ...this.authSubject.value, isAuthenticated: true });
     localStorage.setItem('token', token);
+  }
+
+  setEmail(email: string): void {
+    this.authSubject.next({ ...this.authSubject.value, email });
   }
 
   private removeToken(): void {
@@ -38,7 +43,11 @@ export class AuthService {
   }
 
   logout(): void {
-    this.authSubject.next({ isAuthenticated: false });
+    this.authSubject.next({
+      email: '',
+      isAuthenticated: false,
+    });
+
     this.removeToken();
   }
 
@@ -51,5 +60,9 @@ export class AuthService {
 
   register(data: RegisterRequest): Observable<void> {
     return this.http.post<void>(`${environment.apiUrl}/auth/register`, data);
+  }
+
+  getUser(): Observable<User> {
+    return this.http.get<User>(`${environment.apiUrl}/user/me`);
   }
 }

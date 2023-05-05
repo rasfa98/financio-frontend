@@ -2,11 +2,18 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--spacing);
   background: var(--black);
   padding: var(--spacing);
   height: var(--header-height);
+  color: white;
 
   a {
     color: white;
+  }
+
+  .logout {
+    text-align: right;
+    cursor: pointer;
   }
 }

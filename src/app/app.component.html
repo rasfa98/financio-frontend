@@ -1,4 +1,4 @@
-<app-header [isAuthenticated]="isAuthenticated"></app-header>
+<app-header [isAuthenticated]="isAuthenticated" [email]="email"></app-header>
 
 <div [ngClass]="{ 'logged-in': isAuthenticated }" class="grid">
   <app-sidebar *ngIf="isAuthenticated"></app-sidebar>
