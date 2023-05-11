@@ -14,11 +14,13 @@ import { CurrencyComponent } from './components/currency/currency.component';
 import { EditBudgetComponent } from './components/edit-budget/edit-budget.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ViewBudgetComponent } from './components/view-budget/view-budget.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
     ViewBudgetComponent,
     LoginComponent,
     RegisterComponent,
+    PieChartComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,

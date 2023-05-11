@@ -1,4 +1,37 @@
-<h2>View budget</h2>
+<div class="header">
+  <h2>{{ budget.name }}</h2>
+</div>
 
-{{ budget.name }}
-<app-currency [amount]="budget.amount"></app-currency>
+<div class="grid">
+  <app-card label="Amount">
+    <app-currency [amount]="budget.amount"></app-currency>
+  </app-card>
+
+  <app-card label="Expenses">
+    <span>{{ budget.expenses.length }}</span>
+  </app-card>
+
+  <app-card label="Spent">
+    <app-currency [amount]="sumExpenses"></app-currency>
+  </app-card>
+
+  <app-card label="Remaining">
+    <app-currency [amount]="remainingAmount"></app-currency>
+  </app-card>
+
+  <app-card label="Distribution of expenses (%)">
+    <app-pie-chart
+      id="expenses"
+      [data]="getExpensesChartData()"
+      [options]="getChartOptions()"
+    ></app-pie-chart>
+  </app-card>
+
+  <app-card label="Remaining amount (%)">
+    <app-pie-chart
+      id="spent"
+      [data]="getSpentChartData()"
+      [options]="getChartOptions()"
+    ></app-pie-chart>
+  </app-card>
+</div>

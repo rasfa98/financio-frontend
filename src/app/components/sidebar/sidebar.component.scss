@@ -1,6 +1,9 @@
 :host {
   background: var(--black);
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   ul {
     margin: 0;
@@ -13,9 +16,28 @@
       a {
         display: flex;
         align-items: center;
-        padding: var(--spacing);
+        padding: calc(var(--spacing) * 2);
         color: white;
+        position: relative;
+
+        &.active {
+          &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: var(--primary-color);
+          }
+        }
       }
     }
+  }
+
+  .logout {
+    cursor: pointer;
+    color: white;
+    padding: calc(var(--spacing) * 2);
   }
 }

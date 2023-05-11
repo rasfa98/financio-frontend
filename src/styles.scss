@@ -1,9 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 :root {
-  --header-height: 60px;
+  --header-height: 75px;
   --spacing: 10px;
   --black: #191919;
+  --radius: 4px;
+  --primary-color: #26a646;
 }
 
 * {
@@ -18,7 +20,7 @@ body {
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   color: var(--black);
 }
 
@@ -31,16 +33,18 @@ input {
   width: 100%;
   font-size: 1rem;
   border: 1px solid var(--black);
+  border-radius: var(--radius);
   padding: var(--spacing);
 }
 
 .header {
+  height: 40px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--spacing);
-  margin-bottom: var(--spacing);
+  margin-bottom: calc(var(--spacing) * 2);
 }
 
 form {
@@ -53,5 +57,10 @@ form {
     width: 100%;
     display: flex;
     flex-direction: column;
+
+    label {
+      margin-bottom: calc(var(--spacing) / 2);
+      font-weight: bold;
+    }
   }
 }

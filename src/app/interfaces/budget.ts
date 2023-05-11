@@ -4,6 +4,5 @@ export interface Budget {
   id?: number;
   name: string;
   amount: number;
-  remainingAmount: number;
   expenses: Expense[];
 }

@@ -14,7 +14,7 @@
   <div class="header">
     <h2>Expenses</h2>
 
-    <app-button level="success" class="icon" (onClick)="addExpense()">
+    <app-button level="primary" class="icon" (onClick)="addExpense()">
       <fa-icon [icon]="faPlus"></fa-icon>
     </app-button>
   </div>
@@ -38,7 +38,7 @@
     </ng-container>
   </div>
 
-  <app-button type="submit" level="success" [disabled]="!budgetForm.valid"
+  <app-button type="submit" level="primary" [disabled]="!budgetForm.valid"
     >Save</app-button
   >
 </form>

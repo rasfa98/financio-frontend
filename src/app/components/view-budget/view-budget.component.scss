@@ -1,0 +1,9 @@
+h2 {
+  margin-bottom: var(--spacing);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(var(--spacing) * 2);
+}

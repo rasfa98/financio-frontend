@@ -4,16 +4,24 @@ header {
   justify-content: space-between;
   gap: var(--spacing);
   background: var(--black);
-  padding: var(--spacing);
+  padding: calc(var(--spacing) * 2);
   height: var(--header-height);
   color: white;
 
   a {
     color: white;
+    font-size: 1.4rem;
   }
 
-  .logout {
-    text-align: right;
-    cursor: pointer;
+  .avatar {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
   }
 }

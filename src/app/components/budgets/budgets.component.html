@@ -1,6 +1,6 @@
 <div class="header">
   <h2>Budgets</h2>
-  <app-button class="icon" routerLink="/budgets/create" level="success"
+  <app-button class="icon" routerLink="/budgets/create" level="primary"
     ><fa-icon [icon]="faPlus"></fa-icon
   ></app-button>
 </div>
@@ -12,7 +12,7 @@
     <tr>
       <th>Name</th>
       <th>Amount</th>
-      <th>Remaining amount</th>
+      <th>Remaining</th>
       <th>Expenses</th>
       <th></th>
     </tr>
@@ -26,7 +26,9 @@
         <app-currency [amount]="budget.amount"></app-currency>
       </td>
       <td>
-        <app-currency [amount]="budget.remainingAmount"></app-currency>
+        <app-currency
+          [amount]="calculateRemainingAmount(budget)"
+        ></app-currency>
       </td>
       <td>
         {{ budgets.length }}

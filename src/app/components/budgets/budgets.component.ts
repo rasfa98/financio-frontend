@@ -23,6 +23,15 @@ export class BudgetsComponent {
 
   budgets: Budget[] = [];
 
+  calculateRemainingAmount(budget: Budget): number {
+    const sumExpenses = budget.expenses.reduce(
+      (acc, curr) => (acc += curr.amount),
+      0
+    );
+
+    return budget.amount - sumExpenses;
+  }
+
   ngOnInit(): void {
     this.budgetService
       .getBudgets()

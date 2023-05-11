@@ -1,5 +1,7 @@
 <div *ngIf="budget">
-  <h2>Edit budget</h2>
+  <div class="header">
+    <h2>Edit budget</h2>
+  </div>
 
   <app-budget-form
     (onSubmit)="onSubmit($event)"
