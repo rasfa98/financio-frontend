@@ -76,7 +76,7 @@ export class ViewBudgetComponent {
           backgroundColor: this.budget.expenses.map(
             () =>
               '#' +
-              ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, '0')
+              ((Math.random() * 0x26a646) << 0).toString(16).padStart(6, '0')
           ),
           data: this.budget.expenses.map(
             (expense) => (expense.amount / this.sumExpenses) * 100
@@ -90,7 +90,7 @@ export class ViewBudgetComponent {
       labels: ['Spent', 'Remaining amount'],
       datasets: [
         {
-          backgroundColor: ['red', 'green'],
+          backgroundColor: ['#235430', '#26a646'],
           data:
             this.remainingAmount > 0
               ? [
