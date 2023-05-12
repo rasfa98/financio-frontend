@@ -44,11 +44,6 @@ export class BudgetsComponent {
     this.budgetService.getBudgets().subscribe({
       next: (budgets) => (this.budgets = budgets),
       complete: () => (this.isLoading = false),
-      error: () =>
-        this.notificationService.showNotification({
-          message: 'Error fetching budgets',
-          type: NotificationType.ERROR,
-        }),
     });
   }
 

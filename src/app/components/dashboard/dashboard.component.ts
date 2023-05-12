@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Budget } from 'src/app/interfaces/budget';
-import { NotificationType } from 'src/app/interfaces/notification';
 import { BudgetService } from 'src/app/services/budget.service';
 import { NotificationService } from 'src/app/services/notification.service';
 
@@ -24,11 +23,6 @@ export class DashboardComponent {
     this.budgetService.getBudgets().subscribe({
       next: (budgets) => (this.budgets = budgets),
       complete: () => (this.isLoading = false),
-      error: () =>
-        this.notificationService.showNotification({
-          message: 'Error fetching budget',
-          type: NotificationType.ERROR,
-        }),
     });
   }
 }

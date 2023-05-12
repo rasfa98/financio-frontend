@@ -31,11 +31,6 @@ export class EditBudgetComponent {
         this.budgetService.getBudget(id).subscribe({
           next: (budget) => (this.budget = budget),
           complete: () => (this.isLoading = false),
-          error: () =>
-            this.notificationService.showNotification({
-              message: 'Error fetching budget',
-              type: NotificationType.ERROR,
-            }),
         });
       }
     });
