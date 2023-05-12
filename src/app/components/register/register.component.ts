@@ -40,6 +40,7 @@ export class RegisterComponent {
         });
         this.router.navigateByUrl('/login');
       },
+      // TODO: Handle validation errors.
       error: () =>
         this.notificationService.showNotification({
           message: 'Account with emaiil already exists',
