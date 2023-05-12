@@ -6,7 +6,9 @@ import {
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import { Budget } from 'src/app/interfaces/budget';
+import { NotificationType } from 'src/app/interfaces/notification';
 import { BudgetService } from 'src/app/services/budget.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-budgets',
@@ -14,7 +16,10 @@ import { BudgetService } from 'src/app/services/budget.service';
   styleUrls: ['./budgets.component.scss'],
 })
 export class BudgetsComponent {
-  constructor(private budgetService: BudgetService) {}
+  constructor(
+    private budgetService: BudgetService,
+    private notificationService: NotificationService
+  ) {}
 
   faTrash = faTrash;
   faPen = faPen;
@@ -39,14 +44,28 @@ export class BudgetsComponent {
     this.budgetService.getBudgets().subscribe({
       next: (budgets) => (this.budgets = budgets),
       complete: () => (this.isLoading = false),
+      error: () =>
+        this.notificationService.showNotification({
+          message: 'Error fetching budgets',
+          type: NotificationType.ERROR,
+        }),
     });
   }
 
   removeBudget(budget: Budget): void {
-    this.budgetService
-      .removeBudget(budget)
-      .subscribe(
-        () => (this.budgets = this.budgets.filter((b) => b.id !== budget.id))
-      );
+    this.budgetService.removeBudget(budget).subscribe({
+      next: () => {
+        this.notificationService.showNotification({
+          message: 'Budget removed',
+          type: NotificationType.SUCCESS,
+        });
+        this.budgets = this.budgets.filter((b) => b.id !== budget.id);
+      },
+      error: () =>
+        this.notificationService.showNotification({
+          message: 'Error removing budget',
+          type: NotificationType.ERROR,
+        }),
+    });
   }
 }

@@ -24,6 +24,7 @@ import { CardComponent } from './components/card/card.component';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     BarChartComponent,
     DashboardComponent,
     LoaderComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,10 @@
+<div
+  [ngClass]="[
+    notification ? 'show' : '',
+    notification ? notification.type : ''
+  ]"
+  class="notification"
+>
+  <span class="icon"><fa-icon [icon]="notificationIcon"></fa-icon></span>
+  <span>{{ notification?.message }}</span>
+</div>

@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ChartData } from 'chart.js';
 import { Budget } from 'src/app/interfaces/budget';
+import { NotificationType } from 'src/app/interfaces/notification';
 import { BudgetService } from 'src/app/services/budget.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-view-budget',
@@ -12,7 +14,8 @@ import { BudgetService } from 'src/app/services/budget.service';
 export class ViewBudgetComponent {
   constructor(
     private route: ActivatedRoute,
-    private budgetService: BudgetService
+    private budgetService: BudgetService,
+    private notificationService: NotificationService
   ) {}
 
   budget!: Budget;
@@ -36,6 +39,11 @@ export class ViewBudgetComponent {
         this.budgetService.getBudget(id).subscribe({
           next: (budget) => (this.budget = budget),
           complete: () => (this.isLoading = false),
+          error: () =>
+            this.notificationService.showNotification({
+              message: 'Error fetching budget',
+              type: NotificationType.ERROR,
+            }),
         });
       }
     });

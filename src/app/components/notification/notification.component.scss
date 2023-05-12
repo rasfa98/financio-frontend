@@ -1,0 +1,44 @@
+.notification {
+  position: fixed;
+  color: var(--black);
+  background: white;
+  border-radius: var(--radius);
+  padding: var(--spacing);
+  display: flex;
+  gap: var(--spacing);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  top: var(--spacing);
+  left: 50%;
+  transform: translate(-50%, 0);
+  box-shadow: var(--shadow);
+  transition: none;
+
+  &.show {
+    opacity: 1;
+    transition: opacity 0.2s ease-in;
+  }
+
+  &.success {
+    .icon {
+      background-color: var(--green);
+    }
+  }
+
+  &.error {
+    .icon {
+      background-color: var(--red);
+    }
+  }
+
+  .icon {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+}
