@@ -1,37 +1,36 @@
-<div class="header">
-  <h2>{{ budget.name }}</h2>
-</div>
+<app-loader *ngIf="isLoading"></app-loader>
 
-<div class="grid">
-  <app-card label="Amount">
-    <app-currency [amount]="budget.amount"></app-currency>
-  </app-card>
+<ng-container *ngIf="budget">
+  <div class="header">
+    <h2>{{ budget.name }}</h2>
+  </div>
 
-  <app-card label="Expenses">
-    <span>{{ budget.expenses.length }}</span>
-  </app-card>
+  <div class="grid">
+    <app-card label="Amount">
+      <app-currency [amount]="budget.amount"></app-currency>
+    </app-card>
 
-  <app-card label="Spent">
-    <app-currency [amount]="sumExpenses"></app-currency>
-  </app-card>
+    <app-card label="Expenses">
+      <span>{{ budget.expenses.length }}</span>
+    </app-card>
 
-  <app-card label="Remaining">
-    <app-currency [amount]="remainingAmount"></app-currency>
-  </app-card>
+    <app-card label="Spent">
+      <app-currency [amount]="sumExpenses"></app-currency>
+    </app-card>
 
-  <app-card label="Distribution of expenses (%)">
-    <app-pie-chart
-      id="expenses"
-      [data]="getExpensesChartData()"
-      [options]="getChartOptions()"
-    ></app-pie-chart>
-  </app-card>
+    <app-card label="Remaining">
+      <app-currency [amount]="remainingAmount"></app-currency>
+    </app-card>
 
-  <app-card label="Remaining amount (%)">
-    <app-pie-chart
-      id="spent"
-      [data]="getSpentChartData()"
-      [options]="getChartOptions()"
-    ></app-pie-chart>
-  </app-card>
-</div>
+    <app-card label="Distribution of expenses">
+      <app-bar-chart
+        id="expenses"
+        [data]="getExpensesChartData()"
+      ></app-bar-chart>
+    </app-card>
+
+    <app-card label="Remaining amount (%)">
+      <app-pie-chart id="spent" [data]="getSpentChartData()"></app-pie-chart>
+    </app-card>
+  </div>
+</ng-container>

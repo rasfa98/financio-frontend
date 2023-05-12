@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ChartData, ChartOptions } from 'chart.js';
+import { ChartData } from 'chart.js';
 import { Budget } from 'src/app/interfaces/budget';
 import { BudgetService } from 'src/app/services/budget.service';
 
@@ -16,6 +16,7 @@ export class ViewBudgetComponent {
   ) {}
 
   budget!: Budget;
+  isLoading: boolean = false;
 
   get sumExpenses(): number {
     return this.budget.expenses.reduce((acc, curr) => (acc += curr.amount), 0);
@@ -26,46 +27,18 @@ export class ViewBudgetComponent {
   }
 
   ngOnInit(): void {
+    this.isLoading = true;
+
     this.route.params.subscribe((params) => {
       const id = params['id'];
 
       if (id) {
-        this.budgetService.getBudget(id).subscribe((budget) => {
-          this.budget = budget;
+        this.budgetService.getBudget(id).subscribe({
+          next: (budget) => (this.budget = budget),
+          complete: () => (this.isLoading = false),
         });
       }
     });
-  }
-
-  getChartOptions(): ChartOptions {
-    return {
-      plugins: {
-        tooltip: {
-          displayColors: false,
-          callbacks: {
-            label: function (context) {
-              let label = context.dataset.label || '';
-
-              if (label) {
-                label += ': ';
-              }
-              if (context.parsed !== null) {
-                label = `${context.parsed} %`;
-              }
-              return label;
-            },
-          },
-        },
-        legend: {
-          display: false,
-        },
-      },
-      elements: {
-        arc: {
-          borderWidth: 0,
-        },
-      },
-    };
   }
 
   getExpensesChartData(): ChartData {
@@ -73,31 +46,29 @@ export class ViewBudgetComponent {
       labels: this.budget.expenses.map((expenses) => expenses.name),
       datasets: [
         {
-          backgroundColor: this.budget.expenses.map(
-            () =>
-              '#' +
-              ((Math.random() * 0x26a646) << 0).toString(16).padStart(6, '0')
-          ),
-          data: this.budget.expenses.map(
-            (expense) => (expense.amount / this.sumExpenses) * 100
-          ),
+          backgroundColor: '#26a646',
+          data: this.budget.expenses.map((expense) => expense.amount),
         },
       ],
     };
   }
   getSpentChartData(): ChartData {
     return {
-      labels: ['Spent', 'Remaining amount'],
+      labels:
+        this.remainingAmount > 0
+          ? ['Spent', 'Remaining amount']
+          : ['Remaining amount'],
       datasets: [
         {
-          backgroundColor: ['#235430', '#26a646'],
+          backgroundColor:
+            this.remainingAmount > 0 ? ['#235430', '#26a646'] : ['#235430'],
           data:
             this.remainingAmount > 0
               ? [
                   (this.sumExpenses / this.budget.amount) * 100,
                   (this.remainingAmount / this.budget.amount) * 100,
                 ]
-              : [100, 0],
+              : [100],
         },
       ],
     };

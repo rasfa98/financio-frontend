@@ -22,6 +22,7 @@ export class BudgetsComponent {
   faPlus = faPlus;
 
   budgets: Budget[] = [];
+  isLoading: boolean = false;
 
   calculateRemainingAmount(budget: Budget): number {
     const sumExpenses = budget.expenses.reduce(
@@ -33,9 +34,12 @@ export class BudgetsComponent {
   }
 
   ngOnInit(): void {
-    this.budgetService
-      .getBudgets()
-      .subscribe((budgets) => (this.budgets = budgets));
+    this.isLoading = true;
+
+    this.budgetService.getBudgets().subscribe({
+      next: (budgets) => (this.budgets = budgets),
+      complete: () => (this.isLoading = false),
+    });
   }
 
   removeBudget(budget: Budget): void {

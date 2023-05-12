@@ -1,0 +1,13 @@
+<div class="header">
+  <h2>Dashboard</h2>
+</div>
+
+<app-loader *ngIf="isLoading"></app-loader>
+
+<ng-container *ngIf="!isLoading">
+  <div class="grid">
+    <app-card label="Budgets">
+      <span>{{ budgets.length }}</span>
+    </app-card>
+  </div>
+</ng-container>

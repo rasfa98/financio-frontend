@@ -27,7 +27,7 @@ export class LoginComponent {
     this.authService.login(data as LoginRequest).subscribe((res) => {
       this.authService.setToken(res.token);
       this.authService.setEmail(res.email);
-      this.router.navigateByUrl('/budgets');
+      this.router.navigateByUrl('/dashboard');
     });
   }
 }

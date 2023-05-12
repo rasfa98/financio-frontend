@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BudgetsComponent } from './components/budgets/budgets.component';
 import { CreateBudgetComponent } from './components/create-budget/create-budget.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EditBudgetComponent } from './components/edit-budget/edit-budget.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -16,6 +17,11 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'budgets',

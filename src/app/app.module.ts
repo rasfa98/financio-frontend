@@ -21,6 +21,9 @@ import { ViewBudgetComponent } from './components/view-budget/view-budget.compon
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { CardComponent } from './components/card/card.component';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { CardComponent } from './components/card/card.component';
     RegisterComponent,
     PieChartComponent,
     CardComponent,
+    BarChartComponent,
+    DashboardComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,

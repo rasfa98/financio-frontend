@@ -16,14 +16,18 @@ export class EditBudgetComponent {
   ) {}
 
   budget!: Budget;
+  isLoading: boolean = false;
 
   ngOnInit(): void {
+    this.isLoading = true;
+
     this.route.params.subscribe((params) => {
       const id = parseInt(params['id']);
 
       if (id) {
-        this.budgetService.getBudget(id).subscribe((budget) => {
-          this.budget = budget;
+        this.budgetService.getBudget(id).subscribe({
+          next: (budget) => (this.budget = budget),
+          complete: () => (this.isLoading = false),
         });
       }
     });

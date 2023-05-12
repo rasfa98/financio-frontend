@@ -2,11 +2,11 @@ import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import Chart, { ChartComponent, ChartData, ChartOptions } from 'chart.js/auto';
 
 @Component({
-  selector: 'app-pie-chart',
-  templateUrl: './pie-chart.component.html',
-  styleUrls: ['./pie-chart.component.scss'],
+  selector: 'app-bar-chart',
+  templateUrl: './bar-chart.component.html',
+  styleUrls: ['./bar-chart.component.scss'],
 })
-export class PieChartComponent {
+export class BarChartComponent {
   constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
   @Input() id: string = '';
@@ -29,7 +29,7 @@ export class PieChartComponent {
       this.chart = new Chart(
         { canvas },
         {
-          type: 'pie',
+          type: 'bar',
           data: this.data,
           options: {
             plugins: {
@@ -42,8 +42,13 @@ export class PieChartComponent {
                     if (label) {
                       label += ': ';
                     }
-                    if (context.parsed !== null) {
-                      label = `${context.parsed} %`;
+                    if (context.parsed.y !== null) {
+                      label = new Intl.NumberFormat('en-US', {
+                        style: 'currency',
+                        currency: 'USD',
+                        minimumFractionDigits: 0,
+                        maximumFractionDigits: 0,
+                      }).format(context.parsed.y);
                     }
                     return label;
                   },
@@ -53,12 +58,6 @@ export class PieChartComponent {
                 display: false,
               },
             },
-            elements: {
-              arc: {
-                borderWidth: 0,
-              },
-            },
-            maintainAspectRatio: false,
             ...this.options,
           },
         }
