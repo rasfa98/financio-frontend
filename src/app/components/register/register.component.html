@@ -1,28 +1,36 @@
-<form [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
-  <div class="form-group">
-    <label for="name">Email</label>
-    <input placeholder="Enter email" type="email" formControlName="email" />
+<div class="wrapper">
+  <div class="header">
+    <h2>Regsiter</h2>
   </div>
 
-  <div class="form-group">
-    <label for="amount">Password</label>
-    <input
-      placeholder="Enter password"
-      type="password"
-      formControlName="password"
-    />
-  </div>
+  <form [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
+    <div class="form-group">
+      <label for="name">Email</label>
+      <input placeholder="Enter email" type="email" formControlName="email" />
+    </div>
 
-  <div class="form-group">
-    <label for="amount">Confirm password</label>
-    <input
-      placeholder="Enter confirm password"
-      type="password"
-      formControlName="confirmPassword"
-    />
-  </div>
+    <div class="form-group">
+      <label for="amount">Password</label>
+      <input
+        placeholder="Enter password"
+        type="password"
+        formControlName="password"
+      />
+    </div>
 
-  <app-button type="submit" level="primary" [disabled]="!registerForm.valid"
-    >Register</app-button
-  >
-</form>
+    <div class="form-group">
+      <label for="amount">Confirm password</label>
+      <input
+        placeholder="Enter confirm password"
+        type="password"
+        formControlName="confirmPassword"
+      />
+    </div>
+
+    <app-button type="submit" level="primary" [disabled]="!registerForm.valid"
+      >Register</app-button
+    >
+  </form>
+
+  <p>Already have an account? <a routerLink="/login">Login</a></p>
+</div>

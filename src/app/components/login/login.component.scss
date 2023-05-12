@@ -1,4 +1,16 @@
-form {
+.wrapper {
   max-width: 400px;
   margin: 0 auto;
+}
+
+form {
+  margin-bottom: calc(var(--spacing) * 2);
+}
+
+p {
+  text-align: center;
+}
+
+a {
+  text-decoration: underline;
 }
