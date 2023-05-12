@@ -23,8 +23,8 @@ export class RegisterComponent {
   registerForm = this.fb.group(
     {
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: '',
     },
     { validators: confirmPassword }
   );
