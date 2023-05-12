@@ -1,7 +1,7 @@
 <header>
-  <a routerLink="{{ isAuthenticated ? '/dashboard' : '/' }}"><b>Financio</b></a>
+  <a routerLink="/dashboard"><b>Financio</b></a>
 
-  <div class="avatar" *ngIf="isAuthenticated">
+  <div class="avatar">
     {{ email.charAt(0).toUpperCase() }}
   </div>
 </header>

@@ -1,27 +1,27 @@
 <div class="wrapper">
-  <div class="header">
-    <h2>Login</h2>
+  <div class="card">
+    <img src="/assets/logo.svg" alt="Financio" />
+
+    <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
+      <div class="form-group">
+        <label for="name">Email</label>
+        <input placeholder="Enter email" type="email" formControlName="email" />
+      </div>
+
+      <div class="form-group">
+        <label for="amount">Password</label>
+        <input
+          placeholder="Enter password"
+          type="password"
+          formControlName="password"
+        />
+      </div>
+
+      <app-button type="submit" level="primary" [disabled]="!loginForm.valid"
+        >Login</app-button
+      >
+    </form>
   </div>
-
-  <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
-    <div class="form-group">
-      <label for="name">Email</label>
-      <input placeholder="Enter email" type="email" formControlName="email" />
-    </div>
-
-    <div class="form-group">
-      <label for="amount">Password</label>
-      <input
-        placeholder="Enter password"
-        type="password"
-        formControlName="password"
-      />
-    </div>
-
-    <app-button type="submit" level="primary" [disabled]="!loginForm.valid"
-      >Login</app-button
-    >
-  </form>
 
   <p>Don't have an account? <a routerLink="/register">Register</a></p>
 </div>

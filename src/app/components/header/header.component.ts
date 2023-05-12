@@ -6,6 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Input() isAuthenticated: boolean = false;
   @Input() email: string = '';
 }

@@ -4,11 +4,12 @@
   --header-height: 75px;
   --spacing: 10px;
   --black: #191919;
+  --gray: #bebebe;
   --radius: 4px;
   --primary-color: #26a646;
   --green: #26a646;
   --red: #cd1313;
-  --shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  --shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 * {
@@ -35,7 +36,7 @@ a {
 input {
   width: 100%;
   font-size: 1rem;
-  border: 1px solid var(--black);
+  border: 1px solid var(--gray);
   border-radius: var(--radius);
   padding: var(--spacing);
 }
@@ -63,7 +64,13 @@ form {
 
     label {
       margin-bottom: calc(var(--spacing) / 2);
-      font-weight: bold;
     }
   }
+}
+
+.card {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: white;
+  padding: calc(var(--spacing) * 2);
 }

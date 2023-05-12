@@ -1,6 +1,6 @@
 <app-notification [notification]="notification"></app-notification>
 
-<app-header [isAuthenticated]="isAuthenticated" [email]="email"></app-header>
+<app-header *ngIf="isAuthenticated" [email]="email"></app-header>
 
 <div [ngClass]="{ 'logged-in': isAuthenticated }" class="grid">
   <app-sidebar *ngIf="isAuthenticated"></app-sidebar>
