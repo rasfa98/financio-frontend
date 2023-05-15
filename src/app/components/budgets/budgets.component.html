@@ -28,12 +28,10 @@
         <app-currency [amount]="budget.amount"></app-currency>
       </td>
       <td>
-        <app-currency
-          [amount]="calculateRemainingAmount(budget)"
-        ></app-currency>
+        <app-currency [amount]="getRemainingAmount(budget)"></app-currency>
       </td>
       <td>
-        {{ budgets.length }}
+        {{ getNumberOfExpenses(budget) }}
       </td>
       <td class="actions">
         <app-button class="icon" routerLink="/budgets/{{ budget.id }}/show">

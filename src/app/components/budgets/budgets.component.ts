@@ -29,13 +29,17 @@ export class BudgetsComponent {
   budgets: Budget[] = [];
   isLoading: boolean = false;
 
-  calculateRemainingAmount(budget: Budget): number {
+  getRemainingAmount(budget: Budget): number {
     const sumExpenses = budget.expenses.reduce(
       (acc, curr) => (acc += curr.amount),
       0
     );
 
     return budget.amount - sumExpenses;
+  }
+
+  getNumberOfExpenses(budget: Budget): number {
+    return budget.expenses.length;
   }
 
   ngOnInit(): void {
