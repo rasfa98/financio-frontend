@@ -16,7 +16,7 @@ export class AppComponent {
 
   isAuthenticated: boolean = false;
   email: string = '';
-  notification: Notification | null = null;
+  notification?: Notification;
 
   ngOnInit(): void {
     this.authService.authObservable.subscribe((data) => {

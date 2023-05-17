@@ -8,7 +8,7 @@ import { Notification } from '../interfaces/notification';
 export class NotificationService {
   constructor() {}
 
-  private notificationSubject = new Subject<Notification | null>();
+  private notificationSubject = new Subject<Notification | undefined>();
 
   public readonly notificationObservable =
     this.notificationSubject.asObservable();
@@ -22,6 +22,6 @@ export class NotificationService {
   }
 
   hideNotification() {
-    this.notificationSubject.next(null);
+    this.notificationSubject.next(undefined);
   }
 }

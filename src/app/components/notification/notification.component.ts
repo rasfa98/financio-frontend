@@ -15,7 +15,7 @@ import {
   styleUrls: ['./notification.component.scss'],
 })
 export class NotificationComponent {
-  @Input() notification: Notification | null = null;
+  @Input() notification?: Notification;
 
   get notificationIcon(): IconProp {
     switch (this.notification?.type) {

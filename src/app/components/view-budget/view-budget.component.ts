@@ -28,6 +28,10 @@ export class ViewBudgetComponent {
     return this.budget.amount - this.sumExpenses;
   }
 
+  get progress(): number {
+    return (this.sumExpenses / this.budget.amount) * 100;
+  }
+
   ngOnInit(): void {
     this.isLoading = true;
 
@@ -50,27 +54,6 @@ export class ViewBudgetComponent {
         {
           backgroundColor: '#26a646',
           data: this.budget.expenses.map((expense) => expense.amount),
-        },
-      ],
-    };
-  }
-  getSpentChartData(): ChartData {
-    return {
-      labels:
-        this.remainingAmount > 0
-          ? ['Spent', 'Remaining amount']
-          : ['Remaining amount'],
-      datasets: [
-        {
-          backgroundColor:
-            this.remainingAmount > 0 ? ['#235430', '#26a646'] : ['#235430'],
-          data:
-            this.remainingAmount > 0
-              ? [
-                  (this.sumExpenses / this.budget.amount) * 100,
-                  (this.remainingAmount / this.budget.amount) * 100,
-                ]
-              : [100],
         },
       ],
     };

@@ -5,7 +5,11 @@
     <h2>{{ budget.name }}</h2>
   </div>
 
-  <div class="grid">
+  <app-card label="{{ 'Spent ' + '(' + progress.toFixed(0) + ' %)' }}">
+    <app-progress-bar [completed]="progress"></app-progress-bar>
+  </app-card>
+
+  <div class="cards">
     <app-card label="Amount">
       <app-currency [amount]="budget.amount"></app-currency>
     </app-card>
@@ -21,16 +25,14 @@
     <app-card label="Remaining">
       <app-currency [amount]="remainingAmount"></app-currency>
     </app-card>
+  </div>
 
+  <div class="chart">
     <app-card label="Distribution of expenses">
       <app-bar-chart
         id="expenses"
         [data]="getExpensesChartData()"
       ></app-bar-chart>
-    </app-card>
-
-    <app-card label="Remaining amount (%)">
-      <app-pie-chart id="spent" [data]="getSpentChartData()"></app-pie-chart>
     </app-card>
   </div>
 </ng-container>

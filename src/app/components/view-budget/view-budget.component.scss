@@ -1,5 +1,10 @@
-.grid {
+.cards {
+  margin-top: calc(var(--spacing) * 2);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: calc(var(--spacing) * 2);
+}
+
+.chart {
+  margin-top: calc(var(--spacing) * 2);
 }

@@ -11,7 +11,7 @@ export class BarChartComponent {
 
   @Input() id: string = '';
   @Input() data!: ChartData;
-  @Input() options!: ChartOptions;
+  @Input() options?: ChartOptions;
 
   public chart!: ChartComponent;
 
@@ -58,6 +58,7 @@ export class BarChartComponent {
                 display: false,
               },
             },
+            maintainAspectRatio: false,
             ...this.options,
           },
         }

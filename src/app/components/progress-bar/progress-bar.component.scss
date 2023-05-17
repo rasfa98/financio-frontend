@@ -1,0 +1,22 @@
+.ProgressBar {
+  &__label {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__bar {
+    background: var(--gray);
+    border-radius: var(--radius);
+    height: 15px;
+    overflow: hidden;
+
+    &__progress {
+      height: 100%;
+      background-image: linear-gradient(
+        var(--primary-color),
+        var(--primary-color)
+      );
+      background-repeat: no-repeat;
+    }
+  }
+}

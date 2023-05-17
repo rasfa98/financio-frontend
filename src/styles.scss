@@ -74,3 +74,9 @@ form {
   background: white;
   padding: calc(var(--spacing) * 2);
 }
+
+@mixin mobile {
+  @media (max-width: 540px) {
+    @content;
+  }
+}
