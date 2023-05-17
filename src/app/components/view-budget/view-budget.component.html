@@ -8,27 +8,27 @@
   <app-card
     label="{{
       progress > 100
-        ? 'Spent (100 %)'
-        : 'Spent ' + '(' + progress.toFixed(0) + ' %)'
+        ? 'Percentage spent (100 %)'
+        : 'Percentage spent ' + '(' + progress.toFixed(0) + ' %)'
     }}"
   >
     <app-progress-bar [completed]="progress"></app-progress-bar>
   </app-card>
 
   <div class="cards">
-    <app-card label="Amount">
+    <app-card label="Total amount">
       <app-currency [amount]="budget.amount"></app-currency>
     </app-card>
 
-    <app-card label="Expenses">
+    <app-card label="Number of expenses">
       <span>{{ budget.expenses.length }}</span>
     </app-card>
 
-    <app-card label="Spent">
+    <app-card label="Total spent">
       <app-currency [amount]="sumExpenses"></app-currency>
     </app-card>
 
-    <app-card label="Remaining">
+    <app-card label="Remaining amount">
       <app-currency [amount]="remainingAmount"></app-currency>
     </app-card>
   </div>

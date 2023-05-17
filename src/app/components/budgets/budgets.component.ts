@@ -38,10 +38,6 @@ export class BudgetsComponent {
     return budget.amount - sumExpenses;
   }
 
-  getNumberOfExpenses(budget: Budget): number {
-    return budget.expenses.length;
-  }
-
   ngOnInit(): void {
     this.isLoading = true;
 

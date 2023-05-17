@@ -15,7 +15,6 @@
       <th>Name</th>
       <th>Amount</th>
       <th>Remaining</th>
-      <th>Expenses</th>
       <th></th>
     </tr>
   </thead>
@@ -29,9 +28,6 @@
       </td>
       <td>
         <app-currency [amount]="getRemainingAmount(budget)"></app-currency>
-      </td>
-      <td>
-        {{ getNumberOfExpenses(budget) }}
       </td>
       <td class="actions">
         <app-button class="icon" routerLink="/budgets/{{ budget.id }}/show">
