@@ -5,7 +5,13 @@
     <h2>{{ budget.name }}</h2>
   </div>
 
-  <app-card label="{{ 'Spent ' + '(' + progress.toFixed(0) + ' %)' }}">
+  <app-card
+    label="{{
+      progress > 100
+        ? 'Spent (100 %)'
+        : 'Spent ' + '(' + progress.toFixed(0) + ' %)'
+    }}"
+  >
     <app-progress-bar [completed]="progress"></app-progress-bar>
   </app-card>
 
